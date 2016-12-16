@@ -1,0 +1,20 @@
+
+{{#definitions}}
+export type {{&name}} = {{#tsType}}{{> type}}{{/tsType}}
+{{/definitions}}
+
+
+export abstract class {{&className}} {
+  protected domain: string = "{{&domain}}";
+
+  constructor(domain: string) {
+    this.domain = domain;
+  }
+
+  abstract request(method: string, url: string, body: any, headers: any, queryParameters: any, form: any, reject: Function, resolve: Function) : void;
+
+{{#methods}}
+  {{> method}}
+
+{{/methods}}
+}
