@@ -8,8 +8,6 @@ A fork of `swagger-js-codegen` made for typescript only
 
 # Usage
 
-`node bin`
-
 `node bin/ -i swagger.json -c MyGeneratedClass`
 
 
