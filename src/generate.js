@@ -1,5 +1,5 @@
 const fs = require('fs')
-const CodeGen = require('./lib/codegen').CodeGen
+const CodeGen = require('../lib/codegen').CodeGen
 const http = require('http');
 
 let swaggerFile = 'swagger.json';
@@ -10,14 +10,15 @@ function generate(swaggerFile, className, out) {
 
   let tsSourceCode = CodeGen.getTypescriptCode({
     className: className,
-    swagger: swagger
+    swagger: swagger,
+    templates: __dirname + "/templates/"
   })
 
   let outFile = out ? out : `./${className}.ts`
   fs.writeFileSync(outFile, tsSourceCode)
 }
 
-// run the function if called with node gen.js
+// run the function if called directly with `node gen.js`
 if (require.generate === module) {
   generate(swaggerFile, className, `${className}.ts`)
 }

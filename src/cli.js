@@ -12,5 +12,5 @@ if (program.swaggerFile) {
   gen(program.swaggerFile, program.className || "GeneratedAPI")
 }
 else {
-  console.log("missing swagger file!")
+  console.log("No swagger file defined! Try -h for available program arguments.")
 }

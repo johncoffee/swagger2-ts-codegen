@@ -1,0 +1,27 @@
+{
+  "name": "swagger2-ts-codegen",
+  "version": "1.0.0",
+  "description": "A fork of `swagger-js-codegen` made for typescript only",
+  "main": "index.js",
+  "bin": {
+    "swagger2-ts-codegen": "index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johncoffee/swagger2-ts-codegen.git"
+  },
+  "author": "Julian <npm2016@ragelse.dk> (http://ragelse.dk)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johncoffee/swagger2-ts-codegen/issues"
+  },
+  "homepage": "https://github.com/johncoffee/swagger2-ts-codegen#readme",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "lodash": "^4.17.2",
+    "mustache": "^2.3.0"
+  }
+}
