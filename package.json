@@ -7,13 +7,12 @@
     "swagger2-ts-codegen": "index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/johncoffee/swagger2-ts-codegen.git"
   },
-  "author": "Julian <npm2016@ragelse.dk> (http://ragelse.dk)",
+  "author": "Julian <npm2016@ragelse.dk>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/johncoffee/swagger2-ts-codegen/issues"
