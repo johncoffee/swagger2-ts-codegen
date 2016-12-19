@@ -1,4 +1,4 @@
-const gen = require(`./generate`)
+const gen = require(`../src/generate`)
 const program = require('commander')
 
 program
@@ -8,4 +8,9 @@ program
   .option('-o, --output [value]', `output file path. Defaults to the class name`)
   .parse(process.argv);
 
-gen(program.swaggerFile, program.className || "GeneratedAPI")
+if (program.swaggerFile) {
+  gen(program.swaggerFile, program.className || "GeneratedAPI")
+}
+else {
+  console.log("missing swagger file!")
+}
