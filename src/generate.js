@@ -5,7 +5,7 @@ const http = require('http');
 let swaggerFile = 'swagger.json';
 let className = "GeneratedAPI"
 
-function main(swaggerFile, className, out) {
+function generate(swaggerFile, className, out) {
   let swagger = JSON.parse(fs.readFileSync(swaggerFile, 'UTF-8'))
 
   let tsSourceCode = CodeGen.getTypescriptCode({
@@ -18,8 +18,8 @@ function main(swaggerFile, className, out) {
 }
 
 // run the function if called with node gen.js
-if (require.main === module) {
-  main(swaggerFile, className, `${className}.ts`)
+if (require.generate === module) {
+  generate(swaggerFile, className, `${className}.ts`)
 }
 
-module.exports = main
+module.exports = generate
