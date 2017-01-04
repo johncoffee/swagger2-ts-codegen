@@ -1,11 +1,9 @@
 {{&methodName}}URL(parameters: {
-{{#parameters}}{{^isSingleton}}'{{&camelCaseName}}'{{&cardinality}}: {{> type}},
+  {{#parameters}}{{^isSingleton}}'{{&camelCaseName}}'{{&cardinality}}: {{> type}},
 {{/isSingleton}}{{/parameters}}
-$queryParameters?: any, 
-$domain?: string
+  $queryParameters?: any,
 }): string {
     let queryParameters: any = {};
-    const domain = parameters.$domain ? parameters.$domain : this.domain;
     let path = '{{&path}}';
     {{#parameters}}
         {{#isQueryParameter}}
@@ -48,7 +46,7 @@ $domain?: string
 
 
     let keys = Object.keys(queryParameters);
-    return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')): '');
+    return this.domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')): '');
 };
 
 
@@ -56,10 +54,7 @@ $domain?: string
 {{#parameters}}{{^isSingleton}}'{{&camelCaseName}}'{{&cardinality}}: {{> type}},
 {{/isSingleton}}{{/parameters}}
     $queryParameters?: any,
-    $domain?: string
 }): Promise<{{returnType}}> {
-    const domain = parameters.$domain ? parameters.$domain : this.domain;
-    const request = this.request;
     let path = '{{&path}}';
     let body: any;
     let queryParameters: any = {};
@@ -147,7 +142,7 @@ if(parameters.$queryParameters) {
         {{/isPOST}}
     {{/isBodyParameter}}
 
-    request('{{method}}', this.protocol, domain, this.port, path, queryParameters, body, headers, form, reject, resolve);
+    this.request('{{method}}', this.protocol, this.domain, this.port, path, queryParameters, body, headers, form, reject, resolve);
 
     });
 };
