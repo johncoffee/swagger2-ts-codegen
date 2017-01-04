@@ -1,6 +1,6 @@
 # Swagger Typescript Codegen
 
-A fork of `swagger-js-codegen` made for typescript only
+A hard fork of `swagger-js-codegen` made for typescript only.
 
 # Installation
 
@@ -8,10 +8,15 @@ A fork of `swagger-js-codegen` made for typescript only
 
 # Usage
 
-`node bin/ -i swagger.json -c MyGeneratedClass`
+Command line, using default class- and method templates:
 
+`node bin/index.js -i swagger.json`
+or
+`node bin/index.js -i swagger.json -c MyApi -o ./build`
 
-# Stuff
+To use it programatically, copy the `src` folder into your codebase so you can modify the templates or generator to fit your needs. See the examples...
+
+## Stuff
 
 This codebase attempts to follow semver
 
