@@ -5,13 +5,17 @@ export type {{&name}} = {{#tsType}}{{> type}}{{/tsType}}
 
 
 export abstract class {{&className}} {
-  protected domain: string = "{{&domain}}";
+  public domain: string;
+  public port: number;
+  public protocol: string;
 
-  constructor(domain: string) {
-    this.domain = domain;
+  constructor(host: string, port:number = 80, protocol:string = "http") {
+    this.domain = host;
+    this.port = port;
+    this.protocol = protocol;
   }
 
-  abstract request(method: string, url: string, body: any, headers: any, queryParameters: any, form: any, reject: Function, resolve: Function) : void;
+  abstract request(method: string, protocol: string, domain: string, port:number, path: string, queryParameters: any, body: any, headers: any, form: any, reject: Function, resolve: Function) : Promise;
 
 {{#methods}}
   {{> method}}

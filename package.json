@@ -6,8 +6,7 @@
   "bin": {
     "swagger2-ts-codegen": "index.js"
   },
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/johncoffee/swagger2-ts-codegen.git"
@@ -21,6 +20,7 @@
   "dependencies": {
     "commander": "^2.9.0",
     "lodash": "^4.17.2",
-    "mustache": "^2.3.0"
+    "mustache": "^2.3.0",
+    "typescript": "^2.1.4"
   }
 }

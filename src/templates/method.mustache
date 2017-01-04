@@ -14,7 +14,7 @@ $domain?: string
             {{/isSingleton}}
             {{^isSingleton}}
                 {{#isPatternType}}
-                    Object.keys(parameters).forEach(function(parameterName) {
+                    Object.keys(parameters).forEach((parameterName) => {
                     if(new RegExp('{{&pattern}}').test(parameterName)){
                     queryParameters[parameterName] = parameters[parameterName];
                     }
@@ -34,7 +34,7 @@ $domain?: string
     {{/parameters}}
     
     if(parameters.$queryParameters) {
-        Object.keys(parameters.$queryParameters).forEach(function(parameterName){
+        Object.keys(parameters.$queryParameters).forEach((parameterName) => {
             let parameter = parameters.$queryParameters[parameterName];
             queryParameters[parameterName] = parameter;
         });
@@ -65,7 +65,7 @@ $domain?: string
     let queryParameters: any = {};
     let headers: any = {};
     let form: any = {};
-    return new Promise(function(resolve, reject) {
+    return new Promise((resolve, reject) => {
 {{#headers}}
     headers['{{&name}}'] = {{&value}};
 {{/headers}}
@@ -78,7 +78,7 @@ $domain?: string
         {{/isSingleton}}
         {{^isSingleton}}
             {{#isPatternType}}
-                Object.keys(parameters).forEach(function(parameterName) {
+                Object.keys(parameters).forEach((parameterName) => {
                     if(new RegExp('{{&pattern}}').test(parameterName)){
                         queryParameters[parameterName] = parameters[parameterName];
                     }
@@ -134,7 +134,7 @@ $domain?: string
 {{/parameters}}
 
 if(parameters.$queryParameters) {
-    Object.keys(parameters.$queryParameters).forEach(function(parameterName){
+    Object.keys(parameters.$queryParameters).forEach((parameterName) => {
         let parameter = parameters.$queryParameters[parameterName];
         queryParameters[parameterName] = parameter;
     });
@@ -147,7 +147,7 @@ if(parameters.$queryParameters) {
         {{/isPOST}}
     {{/isBodyParameter}}
 
-    request('{{method}}', domain + path, body, headers, queryParameters, form, reject, resolve);
+    request('{{method}}', this.protocol, domain, this.port, path, queryParameters, body, headers, form, reject, resolve);
 
     });
 };
