@@ -1,26 +1,20 @@
 const fs = require('fs')
 const CodeGen = require('../lib/codegen').CodeGen
 const http = require('http');
+const path = require('path');
 
-let swaggerFile = 'swagger.json';
-let className = "GeneratedAPI"
-
-function generate(swaggerFile, className, out) {
+function generate (swaggerFile, className, outFile) {
+  className = className || "GeneratedAPI"
   let swagger = JSON.parse(fs.readFileSync(swaggerFile, 'UTF-8'))
+  outFile = outFile || `./${className}.ts`
 
   let tsSourceCode = CodeGen.getTypescriptCode({
     className: className,
     swagger: swagger,
-    templates: __dirname + "/templates/"
+    templates: path.join(__dirname, "/templates/")
   })
 
-  let outFile = out ? out : `./${className}.ts`
   fs.writeFileSync(outFile, tsSourceCode)
-}
-
-// run the function if called directly with `node gen.js`
-if (require.generate === module) {
-  generate(swaggerFile, className, `${className}.ts`)
 }
 
 module.exports = generate
