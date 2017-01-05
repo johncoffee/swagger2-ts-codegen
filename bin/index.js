@@ -8,9 +8,4 @@ program
   .option('-o, --output [value]', `output file path. Defaults to the class name`)
   .parse(process.argv);
 
-if (program.swaggerFile) {
-  gen(program.swaggerFile, program.className || "GeneratedAPI")
-}
-else {
-  console.log("No swagger file defined! Try -h for available program arguments.")
-}
+gen(program.swaggerFile, program.className, program.output)
