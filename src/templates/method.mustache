@@ -87,10 +87,6 @@
         {{/isSingleton}}
     {{/isQueryParameter}}
 
-    {{#isPathParameter}}
-        path = path.replace('{{=<% %>=}}{<%&name%>}<%={{ }}=%>', parameters['{{&camelCaseName}}']+'');
-    {{/isPathParameter}}
-
     {{#isHeaderParameter}}
         {{#isSingleton}}
             headers['{{&name}}'] = '{{&singleton}}';
@@ -126,14 +122,18 @@
         }
     {{/required}}
 
+    {{#isPathParameter}}
+        path = path.replace('{{=<% %>=}}{<%&name%>}<%={{ }}=%>', parameters['{{&camelCaseName}}']+'');
+    {{/isPathParameter}}
+
 {{/parameters}}
 
-if(parameters.$queryParameters) {
-    Object.keys(parameters.$queryParameters).forEach((parameterName) => {
-        let parameter = parameters.$queryParameters[parameterName];
-        queryParameters[parameterName] = parameter;
-    });
-}
+        if(parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach((parameterName) => {
+                let parameter = parameters.$queryParameters[parameterName];
+                queryParameters[parameterName] = parameter;
+            });
+        }
 
     {{^isBodyParameter}}
         {{#isPOST}}
@@ -142,7 +142,7 @@ if(parameters.$queryParameters) {
         {{/isPOST}}
     {{/isBodyParameter}}
 
-    this.request('{{method}}', this.protocol, this.domain, this.port, path, queryParameters, body, headers, form, reject, resolve);
+        this.request('{{method}}', this.protocol, this.domain, this.port, path, queryParameters, body, headers, form, reject, resolve);
 
     });
 };
