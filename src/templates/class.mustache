@@ -7,8 +7,11 @@
 export type {{&name}} = {{#tsType}}{{> type}}{{/tsType}}
 {{/definitions}}
 
+export interface CustomRequestMethod {
+  request(method: string, protocol: string, domain: string, port:number, path: string, queryParameters: any, body: any, headers: any, form: any, reject: Function, resolve: Function):void
+}
 
-export abstract class {{&className}} {
+export abstract class {{&className}} implements CustomRequestMethod {
   public domain: string
   public port: number
   public protocol: string
@@ -19,7 +22,12 @@ export abstract class {{&className}} {
     this.protocol = protocol
   }
 
-  abstract request(method: string, protocol: string, domain: string, port:number, path: string, queryParameters: any, body: any, headers: any, form: any, reject: Function, resolve: Function):void
+  // you must overwrite request. You're guided by the interface to the right function signature
+  // this.request = function (method: string):void {
+  // }
+  request(method: string, protocol: string, domain: string, port:number, path: string, queryParameters: any, body: any, headers: any, form: any, reject: Function, resolve: Function):void {
+    throw "not implemented"
+  }
 
 {{#methods}}
   {{> method}}
