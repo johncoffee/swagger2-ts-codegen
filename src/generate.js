@@ -5,6 +5,7 @@ const path = require('path');
 
 function generate (swaggerFile, className, outFile) {
   className = className || "GeneratedAPI"
+  swaggerFile = swaggerFile || "swagger.json"
   let swagger = JSON.parse(fs.readFileSync(swaggerFile, 'UTF-8'))
   outFile = outFile || `./${className}.ts`
 
