@@ -6,8 +6,9 @@ var path = require('path');
 function generate (swaggerFile, className, outFile) {
   className = className || "GeneratedAPI"
   swaggerFile = swaggerFile || "swagger.json"
+  outFile = outFile || path.join(__dirname, className + '.ts')
+
   var swagger = JSON.parse(fs.readFileSync(swaggerFile, 'UTF-8'))
-  outFile = outFile || './'  + className + 'ts'
 
   var tsSourceCode = CodeGen.getTypescriptCode({
     className: className,
