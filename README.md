@@ -5,8 +5,6 @@ A hard fork of `swagger-js-codegen` made for typescript only.
 # Installation
 
 `npm install`
-and
-`typings install`
 
 
 # Usage
@@ -23,10 +21,3 @@ To use it programatically, copy the `src` folder into your codebase so you can m
 # Development tips
 
 I found it super useful to `npm link` this module, while improving the default templates.
-
-
-## Stuff
-
-This codebase attempts to follow semver
-
-This codebase attempts to follow the http://standardjs.com/ coding style
