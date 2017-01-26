@@ -11,8 +11,8 @@ export type {{&name}} = {{#tsType}}{{> type}}{{/tsType}}
 export abstract class {{&className}} {
   public domain: string
   public port: number
-  public protocol: string
-  public basePath: string
+  public protocol: string = "{{&defaultProtocol}}"
+  public basePath: string = "{{&basePath}}"
 
   constructor(host: string, port:number = 80, protocol:string = "http") {
     this.domain = host

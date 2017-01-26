@@ -30,7 +30,7 @@
             path = path.replace('{{=<% %>=}}{<%&name%>}<%={{ }}=%>', parameters['{{&camelCaseName}}'].toString());
         {{/isPathParameter}}
     {{/parameters}}
-    
+
     if(parameters.$queryParameters) {
         Object.keys(parameters.$queryParameters).forEach((parameterName) => {
             let parameter = parameters.$queryParameters[parameterName];
@@ -135,12 +135,17 @@
             });
         }
 
+
     {{^isBodyParameter}}
         {{#isPOST}}
             form = queryParameters;
             queryParameters = {};
         {{/isPOST}}
     {{/isBodyParameter}}
+
+    {{#basePath}}
+        path = this.basePath + path
+    {{/basePath}}
 
         this.request('{{method}}', this.protocol, this.domain, this.port, path, queryParameters, body, headers, form, reject, resolve);
 
