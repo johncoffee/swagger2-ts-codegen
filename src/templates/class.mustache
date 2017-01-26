@@ -12,6 +12,7 @@ export abstract class {{&className}} {
   public domain: string
   public port: number
   public protocol: string
+  public basePath: string
 
   constructor(host: string, port:number = 80, protocol:string = "http") {
     this.domain = host
