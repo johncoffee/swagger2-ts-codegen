@@ -11,6 +11,13 @@
     "type": "git",
     "url": "git+https://github.com/johncoffee/swagger2-ts-codegen.git"
   },
+  "keywords": [
+    "swagger",
+    "rest",
+    "api",
+    "generator",
+    "typescript"
+  ],
   "author": "Julian <npm2016@ragelse.dk>",
   "license": "ISC",
   "bugs": {
