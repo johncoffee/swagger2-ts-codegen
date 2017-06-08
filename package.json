@@ -1,6 +1,6 @@
 {
   "name": "swagger2-ts-codegen",
-  "version": "2.4.1",
+  "version": "2.5.0",
   "description": "A fork of `swagger-js-codegen` made for typescript only",
   "main": "index.js",
   "bin": {
